@@ -2,4 +2,11 @@
 
 require_once('classes/File.php');
 
-$file = new File(__DIR__ . '/files/check.txt');
+$filepath = __DIR__ . '/files/check.txt';
+$currentTime = filemtime($filepath);
+
+$file = new File($filepath, $currentTime);
+while (true) {
+    $file->checkUpdate();
+    sleep(1);
+}
